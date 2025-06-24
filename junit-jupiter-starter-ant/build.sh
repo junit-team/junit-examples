@@ -4,11 +4,11 @@ set -e
 #
 # Set constants.
 #
-junit_platform_version='1.14.0'
+junit_version='1.14.0'
 ant_version='1.10.15'
 ant_folder="apache-ant-${ant_version}"
 ant_archive="${ant_folder}-bin.tar.gz"
-standalone_jar="${ant_folder}/lib/junit-platform-console-standalone-${junit_platform_version}.jar"
+standalone_jar="${ant_folder}/lib/junit-platform-console-standalone-${junit_version}.jar"
 
 #
 # Load and extract Apache Ant.
@@ -23,8 +23,8 @@ fi
 # Load and store junit-platform-console-standalone jar into ${ANT_HOME}/lib.
 #
 if [ ! -f "${standalone_jar}" ]; then
-    echo "Downloading junit-platform-console-standalone $junit_platform_version..."
-    curl --silent --show-error --fail "https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/${junit_platform_version}/junit-platform-console-standalone-${junit_platform_version}.jar" \
+    echo "Downloading junit-platform-console-standalone $junit_version..."
+    curl --silent --show-error --fail "https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/${junit_version}/junit-platform-console-standalone-${junit_version}.jar" \
          --output "${standalone_jar}"
 fi
 

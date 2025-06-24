@@ -43,18 +43,16 @@ record Project() {
     //
     // download main and test dependencies
     //
-    String platformVersion = "1.14.0";
-    String jupiterVersion = "5.14.0";
-    String vintageVersion = "5.14.0";
-    get("lib", "org.junit.platform", "junit-platform-commons", platformVersion);
-    get("lib", "org.junit.platform", "junit-platform-console", platformVersion);
-    get("lib", "org.junit.platform", "junit-platform-engine", platformVersion);
-    get("lib", "org.junit.platform", "junit-platform-launcher", platformVersion);
-    get("lib", "org.junit.platform", "junit-platform-reporting", platformVersion);
-    get("lib", "org.junit.jupiter", "junit-jupiter-api", jupiterVersion);
-    get("lib", "org.junit.jupiter", "junit-jupiter-params", jupiterVersion);
-    get("lib", "org.junit.jupiter", "junit-jupiter-engine", jupiterVersion);
-    get("lib", "org.junit.vintage", "junit-vintage-engine", vintageVersion);
+    String junitVersion = "5.14.0-SNAPSHOT";
+    get("lib", "org.junit.platform", "junit-platform-commons", junitVersion);
+    get("lib", "org.junit.platform", "junit-platform-console", junitVersion);
+    get("lib", "org.junit.platform", "junit-platform-engine", junitVersion);
+    get("lib", "org.junit.platform", "junit-platform-launcher", junitVersion);
+    get("lib", "org.junit.platform", "junit-platform-reporting", junitVersion);
+    get("lib", "org.junit.jupiter", "junit-jupiter-api", junitVersion);
+    get("lib", "org.junit.jupiter", "junit-jupiter-params", junitVersion);
+    get("lib", "org.junit.jupiter", "junit-jupiter-engine", junitVersion);
+    get("lib", "org.junit.vintage", "junit-vintage-engine", junitVersion);
     get("lib", "junit", "junit", "4.13.2");
     get("lib", "org.hamcrest", "hamcrest-core", "1.3");
     get("lib", "org.apiguardian", "apiguardian-api", "1.1.2");
