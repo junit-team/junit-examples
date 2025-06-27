@@ -58,7 +58,7 @@ record Project() {
     get("lib", "org.apiguardian", "apiguardian-api", "1.1.2");
     get("lib", "org.jspecify", "jspecify", "1.0.0");
     get("lib", "org.opentest4j", "opentest4j", "1.3.0");
-    get("lib", "org.opentest4j.reporting", "open-test-reporting-tooling-spi", "0.2.3");
+    get("lib", "org.opentest4j.reporting", "open-test-reporting-tooling-spi", "0.2.4");
     get("lib", "net.jqwik", "jqwik-api", "1.9.3");
     get("lib", "net.jqwik", "jqwik-engine", "1.9.3");
 
