@@ -309,19 +309,25 @@ record Project() {
     }
   }
 
-  int run(String tool, String... args) {
+  void run(String tool, String... args) {
     printCommandDetails("run", tool, args);
-    return ToolProvider.findFirst(tool).get().run(System.out, System.err, args);
+    checkExitCode(ToolProvider.findFirst(tool).get().run(System.out, System.err, args));
   }
 
-  int exe(String executable, String... args) throws Exception {
+  void exe(String executable, String... args) throws Exception {
     printCommandDetails("exe", executable, args);
     ProcessBuilder processBuilder = new ProcessBuilder(executable);
     Arrays.stream(args).forEach(processBuilder.command()::add);
     processBuilder.redirectErrorStream(true);
     Process process = processBuilder.start();
     process.getInputStream().transferTo(System.out);
-    return process.waitFor();
+    checkExitCode(process.waitFor());
+  }
+
+  private void checkExitCode(int exitCode) {
+    if (exitCode != 0) {
+      System.exit(exitCode);
+    }
   }
 
   void printCommandDetails(String context, String command, String... args) {
