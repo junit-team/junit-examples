@@ -43,6 +43,7 @@ record Project() {
     //
     // download main and test dependencies
     //
+    // with "main-SNAPSHOT" as version(s) artifacts will be retrieved from JitPack
     String platformVersion = "1.13.1";
     String jupiterVersion = "5.13.1";
     String vintageVersion = "5.13.1";
@@ -60,6 +61,7 @@ record Project() {
     get("lib", "org.apiguardian", "apiguardian-api", "1.1.2");
     get("lib", "org.opentest4j", "opentest4j", "1.3.0");
     get("lib", "org.opentest4j.reporting", "open-test-reporting-tooling-spi", "0.2.3");
+    get("lib", "org.jspecify", "jspecify", "1.0.0");
     get("lib", "net.jqwik", "jqwik-api", "1.9.3");
     get("lib", "net.jqwik", "jqwik-engine", "1.9.3");
 
@@ -400,6 +402,10 @@ record Project() {
   Path get(String directory, String group, String artifact, String version) throws Exception {
     String repo = "https://repo1.maven.org/maven2";
     String file = artifact + "-" + version + ".jar";
+    if (version.endsWith("SNAPSHOT")) {
+        repo = "https://jitpack.io";
+        group = "com/github/junit-team/junit-framework";
+    }
     URI uri = URI.create(String.join("/", repo, group.replace('.', '/'), artifact, version, file));
     return get(directory, uri);
   }
