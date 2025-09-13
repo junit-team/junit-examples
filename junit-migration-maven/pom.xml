@@ -54,7 +54,7 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.5.3</version>
+				<version>3.5.4</version>
 				<configuration>
 					<!--<groups>fast</groups>-->
 					<excludedGroups>slow</excludedGroups>
