@@ -17,11 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
-      - name: 'Set up JDK 24'
+      - name: 'Set up JDK 25'
         uses: actions/setup-java@dded0888837ed1f317902acf8a20df0ad188d165 # v5.0.0
         with:
-          java-version: 24
-          distribution: temurin
+          java-version: 25
+          distribution: liberica
       - uses: sbt/setup-sbt@17575ea4e18dd928fe5968dbe32294b97923d65b # v1.1.13
       - name: 'Build all examples'
         run: java src/Builder.java
