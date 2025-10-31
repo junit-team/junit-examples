@@ -5,6 +5,8 @@ on:
     branches:
       - main
       - 'r5.*'
+      - 'r6.*'
+      - 'releases/**'
   pull_request:
     branches:
       - '*'
