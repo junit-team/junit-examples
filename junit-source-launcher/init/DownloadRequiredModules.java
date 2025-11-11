@@ -18,26 +18,29 @@ void main() throws Exception {
   var properties = new Properties();
   properties.load(new FileReader("init/module-uri.properties"));
   var lib = Files.createDirectories(Path.of("lib"));
-  downloadModules(lib, properties, Set.of("org.junit.start", "org.apiguardian.api"));
+  downloadModules(Set.of("org.junit.start", "org.apiguardian.api"), lib, properties);
   var missing = computeMissingModuleNames(lib);
   while (!missing.isEmpty()) {
-    downloadModules(lib, properties, missing);
+    downloadModules(missing, lib, properties);
     missing = computeMissingModuleNames(lib);
   }
-  System.out.printf("%nList modules of %s directory%n", lib);
+  IO.println("%nList modules of %s directory".formatted(lib));
   listModules(lib);
 }
 
-static void downloadModules(Path directory, Properties properties, Set<String> names) throws Exception {
-  for (var name : names) {
-    var target = directory.resolve(name + ".jar");
-    if (Files.exists(target)) continue;
-    var source = URI.create(properties.getProperty(name));
-    try (var stream = source.toURL().openStream()) {
-      System.out.println(name + " < " + source + "...");
-      Files.copy(stream, target);
-    }
-  }
+static void downloadModules(Set<String> names, Path directory, Properties properties) {
+  IO.println("Downloading %d module%s".formatted(names.size(), names.size() == 1 ? "" : "s"));
+  names.stream().parallel().forEach(name -> {
+      var target = directory.resolve(name + ".jar");
+      if (Files.exists(target)) return;
+      var source = URI.create(properties.getProperty(name));
+      try (var stream = source.toURL().openStream()) {
+          IO.println(name + " <- " + source + "...");
+          Files.copy(stream, target);
+      } catch (IOException cause) {
+          throw new UncheckedIOException(cause);
+      }
+  });
   var finder = ModuleFinder.of(directory);
   var remainder = new TreeSet<>(names);
   remainder.removeIf(name -> finder.find(name).isPresent());
@@ -69,6 +72,6 @@ static void listModules(Path directory) {
       .map(ModuleReference::descriptor)
       .map(ModuleDescriptor::toNameAndVersion)
       .sorted()
-      .forEach(System.out::println);
-  System.out.printf("    %d modules%n", modules.size());
+      .forEach(IO::println);
+  IO.println("    %d modules".formatted(modules.size()));
 }
