@@ -16,5 +16,5 @@ void main() {
 
 @Test
 void stringLength() {
-    Assertions.assertEquals(11, "Hello JUnit".length());
+	Assertions.assertEquals(11, "Hello JUnit".length());
 }

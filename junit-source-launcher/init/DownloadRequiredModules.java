@@ -8,31 +8,40 @@
  * https://www.eclipse.org/legal/epl-v20.html
  */
 
-import static java.lang.module.ModuleDescriptor.Requires.Modifier.STATIC;
+final Path lib = Path.of("lib");
+final Set<String> roots = Set.of("org.junit.start");
 
 void main() throws Exception {
+  // Ensure being launched inside expected working directory
   var program = Path.of("src", "HelloTests.java");
   if (!Files.exists(program)) {
     throw new AssertionError("Expected %s in current working directory".formatted(program));
   }
+
+  // Read mapping file to locate remote modules
   var properties = new Properties();
   properties.load(new FileReader("init/module-uri.properties"));
-  var lib = Files.createDirectories(Path.of("lib"));
-  downloadModules(Set.of("org.junit.start", "org.apiguardian.api"), lib, properties);
-  var missing = computeMissingModuleNames(lib);
+
+  // Create and initialize lib directory with root module(s)
+  Files.createDirectories(lib);
+  downloadModules(roots, properties);
+
+  // Compute missing modules and download them transitively
+  var missing = computeMissingModuleNames();
   while (!missing.isEmpty()) {
-    downloadModules(missing, lib, properties);
-    missing = computeMissingModuleNames(lib);
+    downloadModules(missing, properties);
+    missing = computeMissingModuleNames();
   }
+
   IO.println("%nList modules of %s directory".formatted(lib));
-  listModules(lib);
+  listModules();
 }
 
-static void downloadModules(Set<String> names, Path directory, Properties properties) {
+void downloadModules(Set<String> names, Properties properties) {
   IO.println("Downloading %d module%s".formatted(names.size(), names.size() == 1 ? "" : "s"));
   names.stream().parallel().forEach(name -> {
-      var target = directory.resolve(name + ".jar");
-      if (Files.exists(target)) return;
+      var target = lib.resolve(name + ".jar");
+      if (Files.exists(target)) return; // Don't overwrite existing JAR file
       var source = URI.create(properties.getProperty(name));
       try (var stream = source.toURL().openStream()) {
           IO.println(name + " <- " + source + "...");
@@ -41,23 +50,24 @@ static void downloadModules(Set<String> names, Path directory, Properties proper
           throw new UncheckedIOException(cause);
       }
   });
-  var finder = ModuleFinder.of(directory);
+  // Ensure that every name can be found to avoid eternal loops
+  var finder = ModuleFinder.of(lib);
   var remainder = new TreeSet<>(names);
   remainder.removeIf(name -> finder.find(name).isPresent());
   if (remainder.isEmpty()) return;
   throw new AssertionError("Modules not downloaded: " + remainder);
 }
 
-static Set<String> computeMissingModuleNames(Path directory) {
+Set<String> computeMissingModuleNames() {
   var system = ModuleFinder.ofSystem();
-  var finder = ModuleFinder.of(directory);
+  var finder = ModuleFinder.of(lib);
   var names =
       finder.findAll().stream()
           .parallel()
           .map(ModuleReference::descriptor)
           .map(ModuleDescriptor::requires)
           .flatMap(Collection::stream)
-          .filter(requires -> !requires.modifiers().contains(STATIC))
+          .filter(this::mustBePresentAtCompileTime)
           .map(ModuleDescriptor.Requires::name)
           .filter(name -> finder.find(name).isEmpty())
           .filter(name -> system.find(name).isEmpty())
@@ -65,8 +75,14 @@ static Set<String> computeMissingModuleNames(Path directory) {
   return new TreeSet<>(names);
 }
 
-static void listModules(Path directory) {
-  var finder = ModuleFinder.of(directory);
+boolean mustBePresentAtCompileTime(ModuleDescriptor.Requires requires) {
+  var isStatic = requires.modifiers().contains(ModuleDescriptor.Requires.Modifier.STATIC);
+  var isTransitive = requires.modifiers().contains(ModuleDescriptor.Requires.Modifier.TRANSITIVE);
+  return !isStatic || isTransitive;
+}
+
+void listModules() {
+  var finder = ModuleFinder.of(lib);
   var modules = finder.findAll();
   modules.stream()
       .map(ModuleReference::descriptor)
