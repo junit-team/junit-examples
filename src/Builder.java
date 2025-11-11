@@ -77,6 +77,15 @@ class Builder {
 		// modular
 		runProject(excludedProjects, "junit-modular-world", "java", modularAction);
 
+		// source launcher
+		/*
+		runProject(excludedProjects, "junit-source-launcher", "java", "init/DownloadRequiredModules.java");
+		runProject(excludedProjects, "junit-source-launcher",
+				"java",
+				"--module-path", "lib",
+				"--add-modules", "org.junit.start",
+				"src/HelloTests.java");
+		*/
 		System.out.printf("%n%n%n|%n| Done. Build exits with status = %d.%n|%n", status);
 		return status;
 	}
@@ -141,7 +150,7 @@ class Builder {
 	}
 
 	boolean isWindows() {
-		return System.getProperty("os.name").toLowerCase(Locale.ROOT).contains("win");
+		return System.getProperty("os.name").toLowerCase(Locale.ROOT).startsWith("win");
 	}
 
 	void checkLicense(String blueprint, String... extensions) {
