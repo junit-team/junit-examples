@@ -1,7 +1,7 @@
 # junit-jupiter-starter-ant
 
 The `junit-jupiter-starter-ant` project demonstrates how to execute JUnit Jupiter
-tests using [Apache Ant](https://ant.apache.org/) 1.10.4 or higher.
+tests using [Apache Ant](https://ant.apache.org/) 1.10.15 or higher.
 
 This example project does not aim to demonstrate how to use the JUnit Jupiter APIs.
 

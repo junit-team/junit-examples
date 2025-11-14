@@ -5,6 +5,8 @@ on:
     branches:
       - main
       - 'r5.*'
+      - 'r6.*'
+      - 'releases/**'
   pull_request:
     branches:
       - '*'
@@ -16,9 +18,9 @@ jobs:
   nohttp:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       - name: 'Run nohttp'
-        uses: jbangdev/jbang-action@5a35aa22c7516500b872d33eea4c6e6bff3b2887 # v0.126.3
+        uses: jbangdev/jbang-action@b924849ade11dbfc3aace8da1c598a84fb3ddfbc # v0.132.1
         with:
           script: io.spring.nohttp:nohttp-cli:0.0.9
           scriptargs: "-D=\\.git -D=build -D=target -D=apache-ant-.+ -F=maven-wrapper\\.properties -F=mvnw\\.cmd -Fmvnw -FMODULE.bazel.lock"

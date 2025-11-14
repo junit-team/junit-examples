@@ -1,3 +1,4 @@
 bin/
 lib/
+!src/build/
 .jqwik-database

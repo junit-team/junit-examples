@@ -2,11 +2,11 @@
 
 The project layout structure and command line tools usages are based on proposals
 introduced by the [**Module System Quick-Start Guide**](https://openjdk.java.net/projects/jigsaw/quick-start).
-Invoke the [jshell](https://docs.oracle.com/javase/9/tools/jshell.htm) script
-`./build.jsh` (Windows: `jshell build.jsh`) to build this example project.
+Invoke [java](https://openjdk.org/jeps/458)'s source launcher
+`java src/build/Build.java` to build this example project.
 
-This example project does not aim to demonstrate how to use the JUnit Platform APIs.
-For detailed  information on the JUnit Platform programming and extension models,
+This example project does not aim to demonstrate how to use the JUnit Framework APIs.
+For detailed information on the JUnit Framework programming and extension models,
 please consult the [User Guide](https://docs.junit.org/current/user-guide/).
 
 ## Source Layout
@@ -22,7 +22,7 @@ It tests the exported packages and types of the main modules.
 
 ## Binary Layout
 
-Main binaries are compiled and packaged using `./compile.jsh`.
+Main binaries are compiled and packaged using `java src/build/Compile.java`.
 
 For example, here are the commands to compile and package the `com.example.tool` module.
 This and the `com.example.application` module don't need external module dependencies.
@@ -57,18 +57,16 @@ jar
     .
 ```
 
-Here is the partly expanded tree of the `bin/` directory after running `./compile.jsh`:
+Here is the partly expanded tree of the `bin/` directory after running `java src/build/Compile.java`:
 
 ![junit-modular-world/bin](doc/screenshot-bin.png)
 
 
 ## Running Tests
 
-Compiling and running tests is achieved by calling the following test scripts: 
+Compiling and running tests is achieved by calling the following Java program: 
 
-- `test-classpath.jsh`
-- `test-patch-compile.jsh`
-- `test-patch-runtime.jsh`
+- `java src/build/Build.java`
 
 ```
 ╷
@@ -116,7 +114,7 @@ Compiling and running tests is achieved by calling the following test scripts:
 ## Ice Cream Test Engine
 
 The `ice.cream` module demonstrates how to write and register your own `TestEngine`
-implementation using the Java Platform Module System.
+implementation using a Java module descriptor.
 This engine does not find any tests in containers, but _discovers_ a configurable
 amount of ice cream scoops.
 

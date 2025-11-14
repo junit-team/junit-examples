@@ -6,7 +6,7 @@ plugins {
     groovy
     eclipse // optional (to generate Eclipse project files)
     idea // optional (to generate IntelliJ IDEA project files)
-    kotlin("jvm") version "2.1.21"
+    kotlin("jvm") version "2.2.21"
 }
 
 repositories {
@@ -15,7 +15,7 @@ repositories {
 
 dependencies {
     val junit4Version = "4.13.2"
-    val junitBomVersion = "5.13.1"
+    val junitBomVersion = "6.0.1"
 
     // Use junit-bom to align versions
     // https://docs.gradle.org/current/userguide/managing_transitive_dependencies.html#sec:bom_import
@@ -62,12 +62,12 @@ dependencies {
     testImplementation("org.spockframework:spock-core:2.4-M6-groovy-4.0") {
         because("allows Spock specifications to run")
     }
-    testImplementation(platform("org.apache.groovy:groovy-bom:4.0.27")) {
+    testImplementation(platform("org.apache.groovy:groovy-bom:4.0.29")) {
         because("use latest 4.x version of Groovy for maximum compatibility with new JDKs")
     }
 
     // Kotest
-    testImplementation("io.kotest:kotest-runner-junit5:5.9.1")
+    testImplementation("io.kotest:kotest-runner-junit5:6.0.4")
     testRuntimeOnly("org.slf4j:slf4j-nop:2.0.17") {
         because("defaulting to no-operation (NOP) logger implementation")
     }

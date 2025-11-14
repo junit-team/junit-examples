@@ -1,8 +1,8 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	kotlin("jvm") version "2.1.21"
+	kotlin("jvm") version "2.2.21"
 }
 
 repositories {
@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-	testImplementation(platform("org.junit:junit-bom:5.13.1"))
+	testImplementation(platform("org.junit:junit-bom:6.0.1"))
 	testImplementation("org.junit.jupiter:junit-jupiter")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
@@ -23,9 +23,9 @@ tasks.test {
 }
 
 tasks.withType<JavaCompile>().configureEach {
-	options.release.set(8)
+	options.release.set(17)
 }
 
 tasks.withType<KotlinCompile>().configureEach {
-	compilerOptions.jvmTarget = JVM_1_8
+	compilerOptions.jvmTarget = JVM_17
 }

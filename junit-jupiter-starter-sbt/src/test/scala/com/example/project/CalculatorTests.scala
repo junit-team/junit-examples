@@ -23,7 +23,7 @@ class CalculatorTests {
   def addsTwoNumbers(): Unit =
     assertEquals(2, Calculator.add(1, 1), "1 + 1 should equal 2")
 
-  @ParameterizedTest(name = "{0} + {1} = {2}")
+  @ParameterizedTest(name = "{0} + {1} = {2}", quoteTextArguments = false)
   @CsvSource(textBlock =
     """0,    1,   1
        1,    2,   3

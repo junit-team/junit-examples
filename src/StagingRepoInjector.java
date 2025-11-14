@@ -77,7 +77,7 @@ public class StagingRepoInjector {
         appendAfter("junit-migration-gradle/build.gradle", "mavenCentral()",
                 gradleGroovyDslSnippet);
 
-        replace("junit-modular-world/BUILDING", "\"https://repo1.maven.org/maven2\"",
+        replace("junit-modular-world/src/build/Project.java", "\"https://repo1.maven.org/maven2\"",
                 "group.startsWith(\"org.junit\") ? \"%s\" : \"https://repo1.maven.org/maven2\"".formatted(stagingRepoUrl));
 
         appendAfter("junit-multiple-engines/build.gradle.kts", "mavenCentral()",
