@@ -43,7 +43,7 @@ record Project() {
     //
     // download main and test dependencies
     //
-    String junitVersion = "6.0.1";
+    String junitVersion = "6.1.0-M1";
     get("lib", "org.junit.platform", "junit-platform-commons", junitVersion);
     get("lib", "org.junit.platform", "junit-platform-console", junitVersion);
     get("lib", "org.junit.platform", "junit-platform-engine", junitVersion);

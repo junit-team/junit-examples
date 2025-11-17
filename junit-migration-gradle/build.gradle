@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-	testImplementation(platform("org.junit:junit-bom:6.0.1"))
+	testImplementation(platform("org.junit:junit-bom:6.1.0-M1"))
 
 	testImplementation("org.junit.jupiter:junit-jupiter") {
 		because 'allows to write and run Jupiter tests'
