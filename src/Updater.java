@@ -35,7 +35,6 @@ class Updater {
     }
 
     void update() throws IOException {
-        /*
         var gradleBomReplacement = Pattern.compile("org.junit:junit-bom:" + VERSION_REGEX);
         var mavenBomReplacement = Pattern.compile(
                 """
@@ -73,7 +72,6 @@ class Updater {
         update(Path.of("junit-multiple-engines/build.gradle.kts"), List.of(
                 Pattern.compile("junitBomVersion = \"" + VERSION_REGEX + '"')
         ));
-        */
         update(Path.of("junit-source-launcher/lib/DownloadRequiredModules.java"), List.of(
                 Pattern.compile("final String version = \"" + VERSION_REGEX + '\"')
         ));
