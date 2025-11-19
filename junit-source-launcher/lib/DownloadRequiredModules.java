@@ -10,28 +10,31 @@
 
 final Path lib = Path.of("lib"); // local directory to be used in module path
 final Set<String> roots = Set.of("org.junit.start"); // single root module to lookup
-final String version = "6.1.0-M1"; // of JUnit Platform
+final String version = "6.1.0-M1"; // of JUnit Framework
+final String repository = "https://repo.maven.apache.org/maven"; // of JUnit Framework
 final String lookup =
         //language=Properties
         """
         org.apiguardian.api=https://repo.maven.apache.org/maven2/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar
         org.jspecify=https://repo.maven.apache.org/maven2/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar
-        org.junit.jupiter.api=https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-api/{{version}}/junit-jupiter-api-{{version}}.jar
-        org.junit.jupiter.engine=https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/{{version}}/junit-jupiter-engine-{{version}}.jar
-        org.junit.jupiter.params=https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-params/{{version}}/junit-jupiter-params-{{version}}.jar
-        org.junit.jupiter=https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter/{{version}}/junit-jupiter-{{version}}.jar
-        org.junit.platform.commons=https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/{{version}}/junit-platform-commons-{{version}}.jar
-        org.junit.platform.console=https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-console/{{version}}/junit-platform-console-{{version}}.jar
-        org.junit.platform.engine=https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/{{version}}/junit-platform-engine-{{version}}.jar
-        org.junit.platform.launcher=https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/{{version}}/junit-platform-launcher-{{version}}.jar
-        org.junit.platform.reporting=https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-reporting/{{version}}/junit-platform-reporting-{{version}}.jar
-        org.junit.platform.suite.api=https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-suite-api/{{version}}/junit-platform-suite-api-{{version}}.jar
-        org.junit.platform.suite.engine=https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-suite-engine/{{version}}/junit-platform-suite-engine-{{version}}.jar
-        org.junit.platform.suite=https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-suite/{{version}}/junit-platform-suite-{{version}}.jar
-        org.junit.start=https://repo.maven.apache.org/maven2/org/junit/junit-start/{{version}}/junit-start-{{version}}.jar
+        org.junit.jupiter.api={{repository}}/org/junit/jupiter/junit-jupiter-api/{{version}}/junit-jupiter-api-{{version}}.jar
+        org.junit.jupiter.engine={{repository}}/org/junit/jupiter/junit-jupiter-engine/{{version}}/junit-jupiter-engine-{{version}}.jar
+        org.junit.jupiter.params={{repository}}/org/junit/jupiter/junit-jupiter-params/{{version}}/junit-jupiter-params-{{version}}.jar
+        org.junit.jupiter={{repository}}/org/junit/jupiter/junit-jupiter/{{version}}/junit-jupiter-{{version}}.jar
+        org.junit.platform.commons={{repository}}/org/junit/platform/junit-platform-commons/{{version}}/junit-platform-commons-{{version}}.jar
+        org.junit.platform.console={{repository}}/org/junit/platform/junit-platform-console/{{version}}/junit-platform-console-{{version}}.jar
+        org.junit.platform.engine={{repository}}/org/junit/platform/junit-platform-engine/{{version}}/junit-platform-engine-{{version}}.jar
+        org.junit.platform.launcher={{repository}}/org/junit/platform/junit-platform-launcher/{{version}}/junit-platform-launcher-{{version}}.jar
+        org.junit.platform.reporting={{repository}}/org/junit/platform/junit-platform-reporting/{{version}}/junit-platform-reporting-{{version}}.jar
+        org.junit.platform.suite.api={{repository}}/org/junit/platform/junit-platform-suite-api/{{version}}/junit-platform-suite-api-{{version}}.jar
+        org.junit.platform.suite.engine={{repository}}/org/junit/platform/junit-platform-suite-engine/{{version}}/junit-platform-suite-engine-{{version}}.jar
+        org.junit.platform.suite={{repository}}/org/junit/platform/junit-platform-suite/{{version}}/junit-platform-suite-{{version}}.jar
+        org.junit.start={{repository}}/org/junit/junit-start/{{version}}/junit-start-{{version}}.jar
         org.opentest4j.reporting.tooling.spi=https://repo.maven.apache.org/maven2/org/opentest4j/reporting/open-test-reporting-tooling-spi/0.2.5/open-test-reporting-tooling-spi-0.2.5.jar
         org.opentest4j=https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar
-        """.replace("{{version}}", version);
+        """
+           .replace("{{repository}}", repository)
+           .replace("{{version}}", version);
 
 void main() throws Exception {
   // Ensure being launched inside expected working directory
