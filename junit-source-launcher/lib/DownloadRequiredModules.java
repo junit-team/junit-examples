@@ -11,7 +11,7 @@
 final Path lib = Path.of("lib"); // local directory to be used in module path
 final Set<String> roots = Set.of("org.junit.start"); // single root module to lookup
 final String version = "6.1.0-M1"; // of JUnit Framework
-final String repository = "https://repo.maven.apache.org/maven"; // of JUnit Framework
+final String repository = "https://repo.maven.apache.org/maven2"; // of JUnit Framework
 final String lookup =
         //language=Properties
         """
