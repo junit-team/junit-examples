@@ -78,7 +78,7 @@ class Builder {
 		runProject(excludedProjects, "junit-modular-world", "java", modularAction);
 
 		// source launcher
-		runProject(excludedProjects, "junit-source-launcher", "java", "init/DownloadRequiredModules.java");
+		runProject(excludedProjects, "junit-source-launcher", "java", "lib/DownloadRequiredModules.java");
 		runProject(excludedProjects, "junit-source-launcher",
 				"java",
 				"--module-path", "lib",
