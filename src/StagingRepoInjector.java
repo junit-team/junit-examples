@@ -83,8 +83,9 @@ public class StagingRepoInjector {
         appendAfter("junit-multiple-engines/build.gradle.kts", "mavenCentral()",
                 gradleKotlinDslSnippet);
 
-        replace("junit-source-launcher/lib/DownloadRequiredModules.java", "String repository = \"https://repo.maven.apache.org/maven\"",
-                "String repository = \"%s\"".formatted(stagingRepoUrl));
+        replace("junit-source-launcher/lib/DownloadRequiredModules.java",
+                "final String repository = \"https://repo.maven.apache.org/maven2\"",
+                "final String repository = \"%s\"".formatted(stagingRepoUrl));
     }
 
     void appendAfter(String path, String token, String addedContent) throws IOException {
