@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
- * Updates the versions of JUnit Platform artifacts in all example projects.
+ * Updates the versions of JUnit Framework artifacts in all example projects.
  */
 @SuppressWarnings({"WeakerAccess", "SameParameterValue"})
 class Updater {
@@ -71,6 +71,9 @@ class Updater {
         ));
         update(Path.of("junit-multiple-engines/build.gradle.kts"), List.of(
                 Pattern.compile("junitBomVersion = \"" + VERSION_REGEX + '"')
+        ));
+        update(Path.of("junit-source-launcher/lib/DownloadRequiredModules.java"), List.of(
+                Pattern.compile("final String version = \"" + VERSION_REGEX + '\"')
         ));
     }
 
