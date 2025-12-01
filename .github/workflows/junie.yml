@@ -20,6 +20,6 @@ jobs:
       issues: write
     steps:
       - uses: actions/checkout@v4
-      - uses: Megamgistr/gh-action@main
+      - uses: JetBrains/junie-github-action@main
         with:
           junie_api_key: ${{ secrets.JUNIE_API_KEY }}
