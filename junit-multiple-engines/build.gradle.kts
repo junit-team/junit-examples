@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -84,11 +84,11 @@ dependencies {
 tasks {
 
     withType<JavaCompile>().configureEach {
-        options.release.set(8)
+        options.release = 17
     }
 
     withType<KotlinCompile>().configureEach {
-        compilerOptions.jvmTarget = JVM_1_8
+        compilerOptions.jvmTarget = JVM_17
     }
 
     val consoleLauncherTest by registering(JavaExec::class) {

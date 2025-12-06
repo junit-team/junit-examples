@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
 
 plugins {
     `kotlin-dsl`
@@ -10,9 +10,9 @@ repositories {
 
 tasks {
     compileKotlin {
-        compilerOptions.jvmTarget = JVM_11
+        compilerOptions.jvmTarget = JVM_17
     }
     compileJava {
-        options.release.set(11)
+        options.release = 17
     }
 }
