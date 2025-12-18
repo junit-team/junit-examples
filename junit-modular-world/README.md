@@ -7,7 +7,7 @@ Invoke [java](https://openjdk.org/jeps/458)'s source launcher
 
 This example project does not aim to demonstrate how to use the JUnit Framework APIs.
 For detailed information on the JUnit Framework programming and extension models,
-please consult the [User Guide](https://docs.junit.org/current/user-guide/).
+please consult the [User Guide](https://docs.junit.org).
 
 ## Source Layout
 

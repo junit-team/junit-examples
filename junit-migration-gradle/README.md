@@ -7,7 +7,7 @@ the JUnit Platform.
 
 This example project does not aim to demonstrate how to use the JUnit Jupiter APIs.
 For detailed information on the JUnit Jupiter programming and extension models,
-please consult the [User Guide](https://docs.junit.org/current/user-guide/).
+please consult the [User Guide](https://docs.junit.org).
 
 ## Enabling the JUnit Platform
 
