@@ -7,7 +7,7 @@ lazy val root = project
   .settings(
     name := "junit-jupiter-starter-sbt",
     libraryDependencies ++= Seq(
-      "net.aichler" % "jupiter-interface" % JupiterKeys.jupiterVersion.value % Test,
+      "com.github.sbt.junit" % "jupiter-interface" % JupiterKeys.jupiterVersion.value % Test,
       "org.junit.jupiter" % "junit-jupiter" % "6.0.1" % Test,
       "org.junit.platform" % "junit-platform-launcher" % "6.0.1" % Test,
     ),
