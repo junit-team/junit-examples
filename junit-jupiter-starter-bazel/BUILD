@@ -1,5 +1,5 @@
 load("@rules_jvm_external//:defs.bzl", "artifact")
-load("@contrib_rules_jvm//java:defs.bzl", "JUNIT5_DEPS", "java_test_suite")
+load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
 
 java_library(
     name = "junit-jupiter-starter-bazel",
@@ -12,7 +12,11 @@ java_test_suite(
     srcs = glob(["src/test/java/**/*.java"]),
     runner = "junit5",
     test_suffixes = ["Tests.java"],
-    runtime_deps = JUNIT5_DEPS,
+    runtime_deps = [
+        artifact("org.junit.jupiter:junit-jupiter-engine"),
+        artifact("org.junit.platform:junit-platform-launcher"),
+        artifact("org.junit.platform:junit-platform-reporting"),
+    ],
     deps = [
         ":junit-jupiter-starter-bazel",
         artifact("org.junit.jupiter:junit-jupiter-api"),
