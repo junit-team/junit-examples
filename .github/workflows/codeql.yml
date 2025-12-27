@@ -7,6 +7,10 @@ on:
       - 'r5.*'
       - 'r6.*'
       - 'releases/**'
+  pull_request:
+    branches:
+      - main
+      - 'releases/**'
   schedule:
     - cron: '23 2 * * 4'
 
