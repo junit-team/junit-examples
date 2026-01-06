@@ -1,4 +1,4 @@
-JUNIT_VERSION = "6.0.1"
+JUNIT_VERSION = "6.0.2"
 
 bazel_dep(name = "rules_jvm_external", version = "6.9")
 bazel_dep(name = "contrib_rules_jvm", version = "0.31.1")
