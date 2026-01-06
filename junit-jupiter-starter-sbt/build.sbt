@@ -8,8 +8,8 @@ lazy val root = project
     name := "junit-jupiter-starter-sbt",
     libraryDependencies ++= Seq(
       "com.github.sbt.junit" % "jupiter-interface" % JupiterKeys.jupiterVersion.value % Test,
-      "org.junit.jupiter" % "junit-jupiter" % "6.0.1" % Test,
-      "org.junit.platform" % "junit-platform-launcher" % "6.0.1" % Test,
+      "org.junit.jupiter" % "junit-jupiter" % "6.0.2" % Test,
+      "org.junit.platform" % "junit-platform-launcher" % "6.0.2" % Test,
     ),
     testOptions += Tests.Argument(jupiterTestFramework, "--display-mode=tree")
   )
