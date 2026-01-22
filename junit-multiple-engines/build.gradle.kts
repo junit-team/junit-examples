@@ -62,7 +62,7 @@ dependencies {
     testImplementation("org.spockframework:spock-core:2.4-groovy-5.0") {
         because("allows Spock specifications to run")
     }
-    testImplementation(platform("org.apache.groovy:groovy-bom:5.0.3")) {
+    testImplementation(platform("org.apache.groovy:groovy-bom:5.0.4")) {
         because("use latest 5.x version of Groovy for maximum compatibility with new JDKs")
     }
 
