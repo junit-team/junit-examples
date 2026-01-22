@@ -73,7 +73,7 @@ dependencies {
     }
 
     // TestNG
-    testImplementation("org.testng:testng:7.11.0") {
+    testImplementation("org.testng:testng:7.12.0") {
         because("allows writing TestNG tests")
     }
     testRuntimeOnly("org.junit.support:testng-engine:1.1.0") {
