@@ -10,7 +10,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<kotlin.version>2.3.0</kotlin.version>
+		<kotlin.version>2.2.21</kotlin.version>
 		<maven.compiler.release>17</maven.compiler.release>
         <kotlin.compiler.jvmTarget>${maven.compiler.release}</kotlin.compiler.jvmTarget>
 	</properties>
