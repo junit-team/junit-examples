@@ -67,7 +67,7 @@ dependencies {
     }
 
     // Kotest
-    testImplementation("io.kotest:kotest-runner-junit5:6.1.1")
+    testImplementation("io.kotest:kotest-runner-junit5:6.1.2")
     testRuntimeOnly("org.slf4j:slf4j-nop:2.0.17") {
         because("defaulting to no-operation (NOP) logger implementation")
     }
