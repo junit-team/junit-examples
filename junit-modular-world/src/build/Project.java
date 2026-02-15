@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2026 the original author or authors.
+ * Copyright 2015-2025 the original author or authors.
  *
  * All rights reserved. This program and the accompanying materials are
  * made available under the terms of the Eclipse Public License v2.0 which
@@ -43,7 +43,7 @@ record Project() {
     //
     // download main and test dependencies
     //
-    String junitVersion = "6.0.2";
+    String junitVersion = "6.0.3";
     get("lib", "org.junit.platform", "junit-platform-commons", junitVersion);
     get("lib", "org.junit.platform", "junit-platform-console", junitVersion);
     get("lib", "org.junit.platform", "junit-platform-engine", junitVersion);

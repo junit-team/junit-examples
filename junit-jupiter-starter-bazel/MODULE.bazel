@@ -1,8 +1,7 @@
-JUNIT_VERSION = "6.0.2"
+JUNIT_VERSION = "6.0.3"
 
-bazel_dep(name = "rules_java", version = "9.3.0")
 bazel_dep(name = "rules_jvm_external", version = "6.9")
-bazel_dep(name = "contrib_rules_jvm", version = "0.32.0")
+bazel_dep(name = "contrib_rules_jvm", version = "0.31.1")
 
 maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
 

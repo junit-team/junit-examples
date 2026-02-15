@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -15,7 +15,7 @@ repositories {
 
 dependencies {
     val junit4Version = "4.13.2"
-    val junitBomVersion = "6.0.2"
+    val junitBomVersion = "6.0.3"
 
     // Use junit-bom to align versions
     // https://docs.gradle.org/current/userguide/managing_transitive_dependencies.html#sec:bom_import
@@ -59,21 +59,21 @@ dependencies {
     testRuntimeOnly("org.spekframework.spek2:spek-runner-junit5:$spekVersion")
 
     // Spock2
-    testImplementation("org.spockframework:spock-core:2.4-groovy-5.0") {
+    testImplementation("org.spockframework:spock-core:2.4-M6-groovy-4.0") {
         because("allows Spock specifications to run")
     }
-    testImplementation(platform("org.apache.groovy:groovy-bom:5.0.4")) {
-        because("use latest 5.x version of Groovy for maximum compatibility with new JDKs")
+    testImplementation(platform("org.apache.groovy:groovy-bom:4.0.29")) {
+        because("use latest 4.x version of Groovy for maximum compatibility with new JDKs")
     }
 
     // Kotest
-    testImplementation("io.kotest:kotest-runner-junit5:6.1.3")
+    testImplementation("io.kotest:kotest-runner-junit5:6.0.5")
     testRuntimeOnly("org.slf4j:slf4j-nop:2.0.17") {
         because("defaulting to no-operation (NOP) logger implementation")
     }
 
     // TestNG
-    testImplementation("org.testng:testng:7.12.0") {
+    testImplementation("org.testng:testng:7.11.0") {
         because("allows writing TestNG tests")
     }
     testRuntimeOnly("org.junit.support:testng-engine:1.1.0") {
@@ -84,11 +84,11 @@ dependencies {
 tasks {
 
     withType<JavaCompile>().configureEach {
-        options.release = 17
+        options.release.set(8)
     }
 
     withType<KotlinCompile>().configureEach {
-        compilerOptions.jvmTarget = JVM_17
+        compilerOptions.jvmTarget = JVM_1_8
     }
 
     val consoleLauncherTest by registering(JavaExec::class) {

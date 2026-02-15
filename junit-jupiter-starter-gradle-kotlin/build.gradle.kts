@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-	testImplementation(platform("org.junit:junit-bom:6.0.2"))
+	testImplementation(platform("org.junit:junit-bom:6.0.3"))
 	testImplementation("org.junit.jupiter:junit-jupiter")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
@@ -23,7 +23,7 @@ tasks.test {
 }
 
 tasks.withType<JavaCompile>().configureEach {
-	options.release = 17
+	options.release.set(17)
 }
 
 tasks.withType<KotlinCompile>().configureEach {

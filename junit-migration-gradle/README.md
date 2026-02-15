@@ -7,7 +7,7 @@ the JUnit Platform.
 
 This example project does not aim to demonstrate how to use the JUnit Jupiter APIs.
 For detailed information on the JUnit Jupiter programming and extension models,
-please consult the [User Guide](https://docs.junit.org).
+please consult the [User Guide](https://docs.junit.org/current/user-guide/).
 
 ## Enabling the JUnit Platform
 
@@ -60,7 +60,7 @@ Jupiter TestEngine.
 
 ```groovy
 dependencies {
-	testImplementation("org.junit.jupiter:junit-jupiter:6.0.2")
+	testImplementation("org.junit.jupiter:junit-jupiter:6.0.3")
 }
 ```
 
@@ -71,7 +71,7 @@ on the JUnit Vintage TestEngine implementation similar to the following.
 ```groovy
 dependencies {
 	testImplementation("junit:junit:4.13.2")
-	testRuntimeOnly("org.junit.vintage:junit-vintage-engine:6.0.2")
+	testRuntimeOnly("org.junit.vintage:junit-vintage-engine:6.0.3")
 }
 ```
 
