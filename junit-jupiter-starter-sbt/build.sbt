@@ -7,9 +7,10 @@ lazy val root = project
   .settings(
     name := "junit-jupiter-starter-sbt",
     libraryDependencies ++= Seq(
+      ("org.junit" % "junit-bom" % "6.0.3").pomOnly(),
       "com.github.sbt.junit" % "jupiter-interface" % JupiterKeys.jupiterVersion.value % Test,
-      "org.junit.jupiter" % "junit-jupiter" % "6.0.3" % Test,
-      "org.junit.platform" % "junit-platform-launcher" % "6.0.3" % Test,
+      "org.junit.jupiter" % "junit-jupiter" % "*" % Test,
+      "org.junit.platform" % "junit-platform-launcher" % "*" % Test,
     ),
     testOptions += Tests.Argument(jupiterTestFramework, "--display-mode=tree")
   )
