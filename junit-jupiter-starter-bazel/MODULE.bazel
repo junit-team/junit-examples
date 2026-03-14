@@ -7,6 +7,7 @@ bazel_dep(name = "contrib_rules_jvm", version = "0.32.0")
 maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
 
 maven.install(
+    known_contributing_modules = ["", "protobuf"],
     artifacts = [
         "org.junit.platform:junit-platform-launcher:%s" % JUNIT_VERSION,
         "org.junit.platform:junit-platform-reporting:%s" % JUNIT_VERSION,
