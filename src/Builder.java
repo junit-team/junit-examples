@@ -82,8 +82,7 @@ class Builder {
 		runProject(excludedProjects, "junit-source-launcher",
 				"java",
 				"--module-path", "lib",
-				"--add-modules", "org.junit.start",
-				"src/HelloTests.java");
+				"src/example/HelloTests.java");
 		System.out.printf("%n%n%n|%n| Done. Build exits with status = %d.%n|%n", status);
 		return status;
 	}
