@@ -8,13 +8,17 @@
  * https://www.eclipse.org/legal/epl-v20.html
  */
 
+package example;
+
 import module org.junit.start;
 
-void main() {
-	JUnit.run();
-}
+class HelloTests {
+	void main() {
+		JUnit.run();
+	}
 
-@Test
-void stringLength() {
-	Assertions.assertEquals(11, "Hello JUnit".length());
+	@Test
+	void stringLength() {
+		Assertions.assertEquals(11, "Hello JUnit".length());
+	}
 }
