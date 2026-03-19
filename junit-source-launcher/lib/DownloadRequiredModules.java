@@ -38,7 +38,7 @@ final String lookup =
 
 void main() throws Exception {
   // Ensure being launched inside expected working directory
-  var program = Path.of("src", "HelloTests.java");
+  var program = Path.of("src", "example", "HelloTests.java");
   if (!Files.exists(program)) {
     throw new AssertionError("Expected %s in current working directory".formatted(program));
   }
