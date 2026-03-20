@@ -40,13 +40,13 @@ jobs:
           distribution: liberica
       - uses: sbt/setup-sbt@dd1ef7d7798fab5ce802a6adab3b782817b8c2d0 # v1.1.20
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@b1bff81932f5cdfc8695c7752dcee935dcd061c8 # v4.33.0
+        uses: github/codeql-action/init@c6f931105cb2c34c8f901cc885ba1e2e259cf745 # v4.34.0
         with:
           languages: ${{ matrix.language }}
           build-mode: ${{ matrix.build-mode }}
       - if: matrix.build-mode == 'manual'
         run: java src/Builder.java --target=compile
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@b1bff81932f5cdfc8695c7752dcee935dcd061c8 # v4.33.0
+        uses: github/codeql-action/analyze@c6f931105cb2c34c8f901cc885ba1e2e259cf745 # v4.34.0
         with:
           category: "/language:${{matrix.language}}"
