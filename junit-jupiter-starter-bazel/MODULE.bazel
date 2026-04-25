@@ -1,4 +1,4 @@
-JUNIT_VERSION = "6.0.3"
+JUNIT_VERSION = "6.1.0-RC1"
 
 bazel_dep(name = "rules_android", version = "0.7.2")
 bazel_dep(name = "rules_java", version = "9.6.1")
