@@ -46,6 +46,8 @@ jobs:
           build-mode: ${{ matrix.build-mode }}
       - if: matrix.build-mode == 'manual'
         run: java src/Builder.java --target=compile
+        env:
+          CODEQL_EXTRACTOR_JAVA_AGENT_DISABLE_KOTLIN: true # blocked by https://github.com/github/codeql/issues/21938
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@8aad20d150bbac5944a9f9d289da16a4b0d87c1e # v4.36.2
         with:
