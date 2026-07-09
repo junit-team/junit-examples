@@ -9,7 +9,7 @@
  */
 
 final Path lib = Path.of("lib"); // local directory to be used in module path
-final String version = "6.1.0"; // of JUnit Framework
+final String version = "6.1.1"; // of JUnit Framework
 final Set<String> roots = Set.of("org.junit.start@" + version); // single root module to lookup
 final String pins = // module versions to amend missing versions or override compiled versions
     // language=Properties
