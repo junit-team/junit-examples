@@ -24,7 +24,7 @@ jobs:
         with:
           java-version: 25
           distribution: liberica
-      - uses: sbt/setup-sbt@9d56cf12e9b58d219605e1d8bfe69a8395fedde0 # v1.5.1
+      - uses: sbt/setup-sbt@6444f4c8111de4b9059c3975def104b03cfaa5f0 # v1.5.2
       - name: 'Build all examples'
         run: java src/Builder.java
       - name: 'Check automation for updating versions'
