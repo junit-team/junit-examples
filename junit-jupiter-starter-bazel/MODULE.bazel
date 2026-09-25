@@ -1,11 +1,14 @@
-JUNIT_VERSION = "6.0.1"
+JUNIT_VERSION = "6.1.3"
 
-bazel_dep(name = "rules_jvm_external", version = "6.9")
-bazel_dep(name = "contrib_rules_jvm", version = "0.30.0")
+bazel_dep(name = "rules_android", version = "0.7.3")
+bazel_dep(name = "rules_java", version = "9.9.0")
+bazel_dep(name = "rules_jvm_external", version = "7.1")
+bazel_dep(name = "contrib_rules_jvm", version = "0.34.0")
 
 maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
 
 maven.install(
+    known_contributing_modules = ["", "protobuf"],
     artifacts = [
         "org.junit.platform:junit-platform-launcher:%s" % JUNIT_VERSION,
         "org.junit.platform:junit-platform-reporting:%s" % JUNIT_VERSION,

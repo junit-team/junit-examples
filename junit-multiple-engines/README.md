@@ -5,9 +5,9 @@ using the JUnit Platform with various [TestEngine][guide-custom-engine] implemen
 
 ## Provided by junit.org
 
- * [JUnit Jupiter](https://docs.junit.org/current/user-guide)
- * [JUnit Vintage](https://docs.junit.org/current/user-guide)
- * [JUnit Platform Suite Engine](https://docs.junit.org/current/user-guide/#junit-platform-suite-engine)
+ * [JUnit Jupiter](https://docs.junit.org/current/writing-tests/intro.html)
+ * [JUnit Vintage](https://docs.junit.org/current/migrating-from-junit4.html)
+ * [JUnit Platform Suite Engine](https://docs.junit.org/current/advanced-topics/junit-platform-suite-engine.html)
  * [TestNG](https://github.com/junit-team/testng-engine)
  
 ## 3rd-party test engines 
@@ -24,4 +24,4 @@ See https://github.com/junit-team/junit-framework/wiki/Third-party-Extensions#ju
 for even more test engine implementations and feel free to add minimal working examples of other
 engines to this project and the wiki page.
 
-[guide-custom-engine]: https://docs.junit.org/current/user-guide/#launcher-api-engines-custom "Plugging in Your Own Test Engine"
+[guide-custom-engine]: https://docs.junit.org/current/advanced-topics/engines.html#custom "Plugging in Your Own Test Engine"

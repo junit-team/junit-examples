@@ -8,17 +8,13 @@
  * https://www.eclipse.org/legal/epl-v20.html
  */
 
-open module extra.modular {
-	//
-	// modules under test
-	//
-	requires com.example.application;
-	requires com.example.tool;
+import module org.junit.start;
 
-	//
-	// test framework api
-	//
-	requires org.junit.jupiter.api;
-	requires junit; // JUnit 4 "automatic module"
-	requires net.jqwik.api;
+void main() {
+	JUnit.run();
+}
+
+@Test
+void stringLength() {
+	Assertions.assertEquals(11, "Hello JUnit".length());
 }

@@ -7,7 +7,7 @@ the JUnit Platform.
 
 This example project does not aim to demonstrate how to use the JUnit Jupiter APIs.
 For detailed information on the JUnit Jupiter programming and extension models,
-please consult the [User Guide](https://docs.junit.org/current/user-guide/).
+please consult the [User Guide](https://docs.junit.org).
 
 Please note that this project uses the [Maven Wrapper](https://github.com/takari/maven-wrapper).
 Thus, to ensure that the correct version of Maven is used, invoke `mvnw` instead of `mvn`.

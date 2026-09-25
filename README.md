@@ -121,4 +121,4 @@ for the JUnit Platform using the Java Platform Module System.
 [ci-badge]:https://github.com/junit-team/junit-examples/workflows/Build%20all%20examples/badge.svg "CI build status"
 [ci-actions]: https://github.com/junit-team/junit-examples/actions
 
-[guide-custom-engine]: https://docs.junit.org/current/user-guide/#launcher-api-engines-custom "Plugging in Your Own Test Engine"
+[guide-custom-engine]: https://docs.junit.org/current/advanced-topics/engines.html#custom "Plugging in Your Own Test Engine"
