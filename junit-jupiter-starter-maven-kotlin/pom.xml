@@ -12,6 +12,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.release>17</maven.compiler.release>
 		<kotlin.version>2.4.20</kotlin.version>
+		<kotlin.compiler.jdkRelease>17</kotlin.compiler.jdkRelease>
 	</properties>
 
 	<dependencyManagement>
