@@ -9,6 +9,27 @@
         </condition>
     </fail>
 
+    <property name="ivy.install.version" value="2.4.0"/>
+    <property name="ivy.install.dir" value="apache-ivy-${ivy.install.version}"/>
+    <property name="ivy.install.file" value="ivy-${ivy.install.version}.jar"/>
+
+    <target name="download-ivy" unless="skip.download">
+        <mkdir dir="${ivy.install.dir}"/>
+        <echo message="installing ivy..."/>
+        <get src="https://repo.maven.apache.org/maven2/org/apache/ivy/ivy/${ivy.install.version}/${ivy.install.file}" dest="${ivy.install.dir}/${ivy.install.file}" usetimestamp="true"/>
+    </target>
+
+    <target name="install-ivy" depends="download-ivy">
+        <path id="ivy.lib.path">
+            <fileset dir="${ivy.install.dir}" includes="*.jar"/>
+        </path>
+        <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path"/>
+    </target>
+
+    <target name="ivy-retrieve" depends="install-ivy">
+        <ivy:retrieve/>
+    </target>
+
     <path id="test.classpath">
         <pathelement path="build/test"/>
         <pathelement path="build/main"/>
@@ -25,10 +46,6 @@
         <mkdir dir="build/main"/>
         <mkdir dir="build/test"/>
         <mkdir dir="build/test-report"/>
-    </target>
-
-    <target name="ivy-retrieve">
-        <ivy:retrieve/>
     </target>
 
     <target name="compile" depends="init, ivy-retrieve">
