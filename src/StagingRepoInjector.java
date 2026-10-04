@@ -62,8 +62,7 @@ public class StagingRepoInjector {
         appendAfter("junit-jupiter-extensions/build.gradle", "mavenCentral()",
                 gradleGroovyDslSnippet);
 
-        replace("junit-jupiter-starter-ant/build.sh", "\"https://repo1.maven.org/maven2",
-                "--header \"Authorization: Bearer $MAVEN_CENTRAL_USER_TOKEN\" \"%s".formatted(stagingRepoUrl));
+        // Omit junit-jupiter-starter-ant because Ivy does not support bearer token authentication
 
         appendAfter("junit-jupiter-starter-gradle/build.gradle", "mavenCentral()",
                 gradleGroovyDslSnippet);
