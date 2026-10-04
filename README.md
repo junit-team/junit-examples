@@ -88,7 +88,7 @@ This sample also demonstrates how to implement a custom [TestEngine][guide-custo
 for the JUnit Platform using the Java Platform Module System.
 
 [junit5-jupiter-extensions]: junit5-jupiter-extensions
-[junit5-jupiter-starter-ant]: junit5-jupiter-starter-ant
+[junit5-jupiter-starter-ant]: junit-jupiter-starter-ant
 [junit5-jupiter-starter-gradle]: junit5-jupiter-starter-gradle
 [junit5-jupiter-starter-gradle-groovy]: junit5-jupiter-starter-gradle-groovy
 [junit5-jupiter-starter-gradle-kotlin]: junit5-jupiter-starter-gradle-kotlin

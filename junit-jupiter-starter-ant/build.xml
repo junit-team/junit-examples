@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:ivy="antlib:org.apache.ivy.ant" name="junit5-jupiter-starter-ant" default="build" basedir=".">
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="junit-jupiter-starter-ant" default="build" basedir=".">
 
     <fail message="Ant 1.10.4+ is required!">
         <condition>
