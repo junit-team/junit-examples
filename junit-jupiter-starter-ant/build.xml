@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:ivy="antlib:org.apache.ivy.ant" name="junit-jupiter-starter-ant" default="build" basedir=".">
 
-    <fail message="Ant 1.10.4+ is required!">
+    <fail message="Ant 1.10.15+ is required!">
         <condition>
             <not>
-                <antversion atleast="1.10.4"/>
+                <antversion atleast="1.10.15"/>
             </not>
         </condition>
     </fail>
@@ -36,7 +36,7 @@
         <javac destdir="build/test" classpathref="test.classpath" srcdir="src/test/java" includeantruntime="false"/>
     </target>
 
-    <!-- https://junit.org/junit5/docs/snapshot/user-guide/#running-tests-build-ant -->
+    <!-- https://docs.junit.org/current/running-tests/build-support.html#ant -->
     <target name="test" depends="compile">
         <junitlauncher haltOnFailure="true" printSummary="true">
             <classpath refid="test.classpath"/>

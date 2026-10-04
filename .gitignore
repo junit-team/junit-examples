@@ -2,6 +2,9 @@
 .gradle
 build/
 
+# Maven
+maven-wrapper.jar
+
 # Ignore Gradle GUI config
 gradle-app.setting
 
@@ -24,3 +27,5 @@ out
 *.class
 .jqwik-database
 install-jdk.sh
+.sdkmanrc
+.tool-versions

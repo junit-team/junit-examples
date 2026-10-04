@@ -1,0 +1,54 @@
+name: "CodeQL"
+
+on:
+  push:
+    branches:
+      - main
+      - 'r5.*'
+      - 'r6.*'
+      - 'releases/**'
+  pull_request:
+    branches:
+      - main
+      - 'releases/**'
+  schedule:
+    - cron: '23 2 * * 4'
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    name: Analyze (${{ matrix.language }})
+    runs-on: 'ubuntu-latest'
+    permissions:
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - language: actions
+            build-mode: none
+          - language: java-kotlin
+            build-mode: manual
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: 'Set up JDK 25'
+        uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with:
+          java-version: 25
+          distribution: liberica
+      - uses: sbt/setup-sbt@82da71df4e122282484a99a8d70096bc2369dbd8 # v1.5.9
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@b96794f015dfd88f77b49b1c93e0fa7110f94c63 # v4.38.0
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: ${{ matrix.build-mode }}
+      - if: matrix.build-mode == 'manual'
+        run: java src/Builder.java --target=compile
+        env:
+          CODEQL_EXTRACTOR_JAVA_AGENT_DISABLE_KOTLIN: true # blocked by https://github.com/github/codeql/issues/21938
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@b96794f015dfd88f77b49b1c93e0fa7110f94c63 # v4.38.0
+        with:
+          category: "/language:${{matrix.language}}"

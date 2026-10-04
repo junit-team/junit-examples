@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 #
 # Set constants.
@@ -22,4 +23,4 @@ tar --extract -z --exclude "${ant_folder}/manual" --file "${ant_archive}"
 #
 # Finally, let Ant do its work...
 #
-ANT_HOME=${ant_folder} "./${ant_folder}/bin/ant"
+ANT_HOME=${ant_folder} "./${ant_folder}/bin/ant" "$@"
