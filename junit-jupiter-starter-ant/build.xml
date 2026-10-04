@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="junit-jupiter-starter-ant" default="build" basedir=".">
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="junit-jupiter-starter-ant" default="build" basedir=".">
 
     <fail message="Ant 1.10.15+ is required!">
         <condition>
@@ -9,10 +9,31 @@
         </condition>
     </fail>
 
+    <property name="ivy.install.version" value="2.4.0"/>
+    <property name="ivy.install.dir" value="apache-ivy-${ivy.install.version}"/>
+    <property name="ivy.install.file" value="ivy-${ivy.install.version}.jar"/>
+
+    <target name="download-ivy" unless="skip.download">
+        <mkdir dir="${ivy.install.dir}"/>
+        <echo message="installing ivy..."/>
+        <get src="https://repo.maven.apache.org/maven2/org/apache/ivy/ivy/${ivy.install.version}/${ivy.install.file}" dest="${ivy.install.dir}/${ivy.install.file}" usetimestamp="true"/>
+    </target>
+
+    <target name="install-ivy" depends="download-ivy">
+        <path id="ivy.lib.path">
+            <fileset dir="${ivy.install.dir}" includes="*.jar"/>
+        </path>
+        <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path"/>
+    </target>
+
+    <target name="ivy-retrieve" depends="install-ivy">
+        <ivy:retrieve/>
+    </target>
+
     <path id="test.classpath">
         <pathelement path="build/test"/>
         <pathelement path="build/main"/>
-        <fileset dir="${ant.home}/lib" includes="*.jar" />
+        <fileset dir="lib" includes="*.jar" />
     </path>
 
     <target name="build" description="clean build" depends="clean, test" />
@@ -27,13 +48,13 @@
         <mkdir dir="build/test-report"/>
     </target>
 
-    <target name="compile" depends="init">
+    <target name="compile" depends="init, ivy-retrieve">
         <javac destdir="build/main" srcdir="src/main/java" includeantruntime="false"/>
         <javac destdir="build/test" classpathref="test.classpath" srcdir="src/test/java" includeantruntime="false"/>
     </target>
 
     <!-- https://docs.junit.org/current/running-tests/build-support.html#ant -->
-    <target name="test.junit.launcher" depends="compile">
+    <target name="test" depends="compile">
         <junitlauncher haltOnFailure="true" printSummary="true">
             <classpath refid="test.classpath"/>
             <testclasses outputdir="build/test-report">
@@ -45,22 +66,5 @@
             </testclasses>
         </junitlauncher>
     </target>
-
-    <!-- https://docs.junit.org/current/running-tests/console-launcher.html -->
-    <target name="test.console.launcher" depends="compile">
-        <java classpathref="test.classpath" classname="org.junit.platform.console.ConsoleLauncher" fork="true" failonerror="true">
-            <arg value="execute"/>
-            <arg value="--scan-classpath"/>
-            <arg line="--reports-dir build/test-report"/>
-        </java>
-        <junitreport todir="build/test-report">
-            <fileset dir="build/test-report">
-                <include name="TEST-*.xml"/>
-            </fileset>
-            <report format="frames" todir="build/test-report/html"/>
-        </junitreport>
-    </target>
-
-    <target name="test" depends="test.junit.launcher, test.console.launcher" />
 
 </project>

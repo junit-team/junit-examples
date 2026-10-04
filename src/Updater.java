@@ -45,8 +45,8 @@ class Updater {
         );
 
         update(Path.of("junit-jupiter-extensions/build.gradle"), List.of(gradleBomReplacement));
-        update(Path.of("junit-jupiter-starter-ant/build.sh"), List.of(
-                Pattern.compile("junit_version='" + VERSION_REGEX + "'")
+        update(Path.of("junit-jupiter-starter-ant/ivy.xml"), List.of(
+                Pattern.compile("<dependency org=\"org.junit.* rev=\"" + VERSION_REGEX + "\"/>")
         ));
         update(Path.of("junit-jupiter-starter-bazel/MODULE.bazel"), List.of(
                 Pattern.compile("JUNIT_VERSION = \"" + VERSION_REGEX + '"')
