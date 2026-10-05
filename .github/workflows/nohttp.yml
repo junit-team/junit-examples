@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: 'Run nohttp'
-        uses: jbangdev/jbang-action@c1e811eb87ddfff6646c545c708fbb686253f066 # v0.141.0
+        uses: jbangdev/jbang-action@03f9f9f6881262b315ec6b6c7d02d8af52ac889a # v0.142.0
         with:
           script: io.spring.nohttp:nohttp-cli:0.0.9
           scriptargs: "-D=\\.git -D=build -D=target -D=apache-ant-.+ -F=maven-wrapper\\.properties -F=mvnw\\.cmd -Fmvnw -FMODULE.bazel.lock"
