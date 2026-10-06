@@ -54,10 +54,7 @@ class Builder {
 		var modularAction = target == Target.TEST ? "src/build/Build.java" : "src/build/Compile.java";
 
 		// jupiter-starter
-		if (!isWindows()) { // TODO https://github.com/junit-team/junit-examples/issues/66
-			runProject(excludedProjects, "junit-jupiter-starter-ant", "build.sh", "clean", antTarget);
-		}
-
+		runProject(excludedProjects, "junit-jupiter-starter-ant", "java", "Ant.java", antTarget);
 		runProject(excludedProjects, "junit-jupiter-starter-gradle", "gradlew", gradleTask);
 		runProject(excludedProjects, "junit-jupiter-starter-gradle-groovy", "gradlew", gradleTask);
 		runProject(excludedProjects, "junit-jupiter-starter-gradle-kotlin", "gradlew", gradleTask);
