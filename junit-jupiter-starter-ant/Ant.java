@@ -14,31 +14,32 @@
  * @see <a href="https://ant.apache.org">https://ant.apache.org</a>
  */
 void main(String... args) throws Exception {
-  var version = System.getProperty("version", "1.10.18");
-  var title = "apache-ant-" + version;
-  var archive = title + "-bin.zip";
-  var into = Path.of(title);
-  var antHome = into.resolve(title);
+  String version = System.getProperty("version", "1.10.18");
+  String title = "apache-ant-" + version;
+  String archive = title + "-bin.zip";
+  Path into = Path.of(title);
+  Path antHome = into.resolve(title);
   // Get Ant
   if (!Files.isDirectory(antHome)) {
-    var target = into.resolve(archive);
+    Path target = into.resolve(archive);
     if (!Files.exists(target)) {
-      var source = "https://dlcdn.apache.org/ant/binaries/" + archive;
-      var parent = target.getParent();
+      String source = "https://dlcdn.apache.org/ant/binaries/" + archive;
+      Path parent = target.getParent();
       if (!Files.isDirectory(parent)) Files.createDirectories(parent);
-      try (var stream = URI.create(source).toURL().openStream()) {
+      try (InputStream stream = URI.create(source).toURL().openStream()) {
         IO.println(target.getFileName() + " <- " + source + "...");
         Files.copy(stream, target);
       }
     }
-    var jar = ToolProvider.findFirst("jar").orElseThrow();
-    jar.run(System.out, System.err, "--extract", "--file", target.toString(), "--dir", title);
+    ToolProvider jar = ToolProvider.findFirst("jar").orElseThrow(() -> new Error("jar not found"));
+    int code = jar.run(System.out, System.err, "--extract", "--file", target.toString(), "--dir", title);
+    if (code != 0) throw new Error("Extracting archive failed with error code: " + code);
   }
   // Run Ant
-  ProcessBuilder processBuilder = new ProcessBuilder("java");
-  processBuilder.command().add("--class-path");
-  processBuilder.command().add(antHome.resolve("lib/ant-launcher.jar").toString());
-  processBuilder.command().add("org.apache.tools.ant.launch.Launcher");
+  Path javaLauncher = Path.of(System.getProperty("java.home", "."), "bin", "java");
+  ProcessBuilder processBuilder = new ProcessBuilder(javaLauncher.toString());
+  processBuilder.command().add("-jar");
+  processBuilder.command().add(antHome.resolve("lib", "ant-launcher.jar").toString());
   Arrays.stream(args).forEach(processBuilder.command()::add);
   processBuilder.redirectErrorStream(true);
   Process process = processBuilder.start();
@@ -47,4 +48,3 @@ void main(String... args) throws Exception {
   if (result == 0) return;
   throw new Error("Ant failed with error code: " + result);
 }
-
