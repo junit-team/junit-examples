@@ -14,8 +14,8 @@
  * @see <a href="https://ant.apache.org">https://ant.apache.org</a>
  */
 void main(String... args) throws Exception {
-  String version = System.getProperty("version", "1.10.18");
-  String title = "apache-ant-" + version;
+  String version = "1.10.18";
+  String title = "apache-ant-" + System.getProperty("version", version);
   String archive = title + "-bin.zip";
   Path into = Path.of(title);
   Path antHome = into.resolve(title);

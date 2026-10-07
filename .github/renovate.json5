@@ -3,4 +3,26 @@
   extends: [
     'github>junit-team/renovate-config',
   ],
+  customManagers: [
+    {
+      customType: 'regex',
+      managerFilePatterns: ['/^junit-jupiter-starter-ant/Ant\\.java$/'],
+      matchStrings: [
+        'String version = "(?<currentValue>[^"]+)"',
+      ],
+      datasourceTemplate: 'maven',
+      depNameTemplate: 'ant/ant',
+      versioningTemplate: 'semver',
+    },
+    {
+      customType: 'regex',
+      managerFilePatterns: ['/^junit-jupiter-starter-ant/build\\.xml$/'],
+      matchStrings: [
+        '<property name="ivy.install.version" value="(?<currentValue>[^"]+)"/>',
+      ],
+      datasourceTemplate: 'maven',
+      depNameTemplate: 'ivy/ivy',
+      versioningTemplate: 'semver',
+    }
+  ],
 }
