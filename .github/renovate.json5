@@ -8,7 +8,7 @@
       customType: 'regex',
       managerFilePatterns: ['/^junit-jupiter-starter-ant/Ant\\.java$/'],
       matchStrings: [
-        '\\s*version = "(?<currentValue>[^"]+)";',
+        '\\s*String version = "(?<currentValue>[^"]+)";',
       ],
       datasourceTemplate: 'maven',
       depNameTemplate: 'org.apache.ant:ant',
