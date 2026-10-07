@@ -41,10 +41,7 @@ void main(String... args) throws Exception {
   processBuilder.command().add("-jar");
   processBuilder.command().add(antHome.resolve("lib", "ant-launcher.jar").toString());
   Arrays.stream(args).forEach(processBuilder.command()::add);
-
-  processBuilder.redirectError(ProcessBuilder.Redirect.INHERIT);
-  processBuilder.redirectOutput(ProcessBuilder.Redirect.INHERIT);
-  processBuilder.redirectInput(ProcessBuilder.Redirect.INHERIT);
+  processBuilder.inheritIO();
 
   Process process = processBuilder.start();
   System.exit(process.waitFor());
