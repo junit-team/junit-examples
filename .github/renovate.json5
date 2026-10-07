@@ -8,21 +8,21 @@
       customType: 'regex',
       managerFilePatterns: ['/^junit-jupiter-starter-ant/Ant\\.java$/'],
       matchStrings: [
-        'String version = "(?<currentValue>[^"]+)"',
+        '\\s*version = "(?<currentValue>[^"]+)";',
       ],
       datasourceTemplate: 'maven',
-      depNameTemplate: 'ant/ant',
-      versioningTemplate: 'semver',
+      depNameTemplate: 'org.apache.ant:ant',
+      versioningTemplate: 'maven',
     },
     {
       customType: 'regex',
       managerFilePatterns: ['/^junit-jupiter-starter-ant/build\\.xml$/'],
       matchStrings: [
-        '<property name="ivy.install.version" value="(?<currentValue>[^"]+)"/>',
+        '\\s*<property name="ivy.install.version" value="(?<currentValue>[^"]+)"\\/>',
       ],
       datasourceTemplate: 'maven',
-      depNameTemplate: 'ivy/ivy',
-      versioningTemplate: 'semver',
+      depNameTemplate: 'org.apache.ivy:ivy',
+      versioningTemplate: 'maven',
     }
   ],
 }
