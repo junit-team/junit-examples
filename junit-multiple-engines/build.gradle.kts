@@ -6,7 +6,7 @@ plugins {
     groovy
     eclipse // optional (to generate Eclipse project files)
     idea // optional (to generate IntelliJ IDEA project files)
-    kotlin("jvm") version "2.4.20"
+    kotlin("jvm") version "2.4.21"
 }
 
 repositories {
