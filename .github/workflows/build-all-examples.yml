@@ -7,8 +7,7 @@ on:
       - 'r6.*'
       - 'releases/**'
   pull_request:
-    branches:
-      - '*'
+  merge_group:
 
 permissions:
   contents: read
