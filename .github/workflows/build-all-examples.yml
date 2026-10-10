@@ -29,6 +29,7 @@ jobs:
           develocity-url: https://develocity.junit.org
           develocity-plugin-version: '4.6.0'
           develocity-access-key: ${{ secrets.DEVELOCITY_ACCESS_KEY }}
+      - run: cat .github/gradle.properties >> "$GRADLE_USER_HOME/gradle.properties"
       - uses: sbt/setup-sbt@6158cb0903b8ceeae04f830055f3155e1b6a5ad7 # v1.5.11
       - name: 'Build all examples'
         run: java src/Builder.java
