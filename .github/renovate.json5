@@ -24,6 +24,15 @@
       datasourceTemplate: 'maven',
       depNameTemplate: 'org.apache.ivy:ivy',
       versioningTemplate: 'maven',
+    },
+    {
+      customType: 'regex',
+      managerFilePatterns: ['/^\\.github/workflows/.+\\.ya?ml$/'],
+      matchStrings: [
+        "develocity-plugin-version: '(?<currentValue>[^']+)'",
+      ],
+      datasourceTemplate: 'gradle-plugin',
+      depNameTemplate: 'com.gradle.develocity',
     }
   ],
 }
