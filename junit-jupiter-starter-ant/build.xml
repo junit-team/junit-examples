@@ -9,7 +9,7 @@
         </condition>
     </fail>
 
-    <property name="ivy.install.version" value="2.4.0"/>
+    <property name="ivy.install.version" value="2.6.0"/>
     <property name="ivy.install.dir" value="apache-ivy-${ivy.install.version}"/>
     <property name="ivy.install.file" value="ivy-${ivy.install.version}.jar"/>
 
