@@ -37,7 +37,6 @@ jobs:
         with:
           module-root: junit-jupiter-starter-bazel
           bazelisk-cache: true
-          repository-cache: true
           disk-cache: true
       - name: 'Build all examples'
         run: java src/Builder.java
