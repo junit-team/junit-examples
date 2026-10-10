@@ -91,7 +91,7 @@ tasks {
         compilerOptions.jvmTarget = JVM_17
     }
 
-    val consoleLauncherTest by registering(JavaExec::class) {
+    val consoleLauncherTest = register<JavaExec>("consoleLauncherTest") {
         dependsOn(testClasses)
         classpath = sourceSets.test.get().runtimeClasspath
         mainClass.set("org.junit.platform.console.ConsoleLauncher")
