@@ -116,7 +116,11 @@ class Builder {
 		if (status != 0) {
 			return;
 		}
-		System.out.printf("%n%n%n|%n| %s%n|%n", directory);
+		if (System.getenv("CI") != null) {
+			System.out.printf("::group::%s%n", directory);
+		} else {
+			System.out.printf("%n%n%n|%n| %s%n|%n", directory);
+		}
 		System.out.printf("| %s %s%n|%n", executable, String.join(" ", args));
 		var path = Paths.get(directory);
 		var isWindows = isWindows();
@@ -141,6 +145,9 @@ class Builder {
 			System.out.printf("%n%n%n| %s failed to build!%n", directory);
 			exception.printStackTrace(System.err);
 			status = 1;
+		}
+		if (System.getenv("CI") != null) {
+			System.out.println("::endgroup::");
 		}
 	}
 
