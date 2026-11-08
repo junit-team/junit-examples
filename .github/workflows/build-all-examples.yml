@@ -32,7 +32,7 @@ jobs:
           develocity-url: https://develocity.junit.org
           develocity-access-key: ${{ secrets.DEVELOCITY_ACCESS_KEY }}
       - run: cat .github/gradle.properties >> "$GRADLE_USER_HOME/gradle.properties"
-      - uses: sbt/setup-sbt@ecad189dd245444b9ae0a0cd5922fd938b88906f # v1.5.12
+      - uses: sbt/setup-sbt@67d461eba2c4753196c230e02da850757ba4775e # v1.5.14
       - uses: bazel-contrib/setup-bazel@104e3eea9447cdaa4b00d0fb46191a3985d26ab3 # 0.19.1
         with:
           module-root: junit-jupiter-starter-bazel
