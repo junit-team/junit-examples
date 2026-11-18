@@ -1,1 +1,1 @@
-addSbtPlugin("com.github.sbt.junit" % "sbt-jupiter-interface" % "0.19.0")
+addSbtPlugin("com.github.sbt.junit" % "sbt-jupiter-interface" % "0.20.0")
